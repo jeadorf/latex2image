@@ -1,0 +1,88 @@
+README
+
+latex2image renders latex formulae into PNG, and can either be used as a simple
+command-line tool or as a web service for rendering latex code on-the-fly. The
+web service employs a caching mechanism, thus avoiding to generate the same
+latex formulae more than once.
+
+
+INSTALLATION
+
+1. Extract latex2image
+
+Extract the latex2image-XYZ.tar.gz archive to the desired location on your web
+server. For the rest of the installation instructions, let us assume that you
+installed latex2image like this:
+
+/home/jdoe/latex2image
+  |- tmp/
+  |- cache/
+  |- latex2image
+  |- latex2image.php
+  |- template.tex
+  |- whitelist
+  |- deny.png
+
+You might need to adjust permissions for the directories tmp and cache.
+
+2. Make latex2image accessible
+
+Assuming that /home/jdoe/example.com is your web root for www.example.com, you 
+now create a symbolic link to latex2image.php from /home/jdoe/example.com
+
+ln -s /home/jdoe/latex2image/latex2image.php /home/jdoe/example.com/latex2image.php
+
+3. Test latex2image
+
+Send a request to your web server like this:
+
+http://www.example.com/latex2image.php?latex=$$\square$$
+
+The script will prove to be operational if it returns a PNG picture showing a
+small square.
+
+
+NOTES ON SECURITY
+
+I do not guarantee for the security of the script, as it might be dangerous
+to compile user-provided Latex input on the server. I have written the 
+tool with the best of my knowledge (any comments welcome):
+
+* explicitly disabled write18 latex commands by feeding latex with the
+  -no-shell-escape command line option.
+* using dvips with the -R2 option
+* citing from http://www.pd.infn.it/TeX/doc/html/web2c/web2c_4.html
+        "TeX can write output files, via the \openout primitive; this opens a
+        security hole vulnerable to Trojan horse attack: an unwitting user
+        could run a TeX program that overwrites, say, `~/.rhosts'. (MetaPost
+        has a write primitive with similar implications). To alleviate this,
+        there is a configuration variable openout_any, which selects one of
+        three levels of security. When it is set to `a' (for "any"), no
+        restrictions are imposed. When it is set to `r' (for "restricted"),
+        filenames beginning with `.' are disallowed (except `.tex' because
+        LaTeX needs it). When it is set to `p' (for "paranoid") additional
+        restrictions are imposed: an absolute filename must refer to a file in
+        (a subdirectory) of TEXMFOUTPUT, and any attempt to go up a directory
+        level is forbidden (that is, paths may not contain a `..' component).
+        The paranoid setting is the default. (For backwards compatibility, `y'
+        and `1' are synonyms of `a', while `n' and `0' are synonyms for `r'.)"
+  latex2image relies on this.
+
+If you want to be especially careful you can enable whitelisting. latex2image
+hashes latex formulae using sha1 to create file names. You can force
+latex2image.php to verify that the generated sha1-hash is contained in the file
+'whitelist'. Example:
+
+Let's assume we have a request like this:
+http://www.example.com/latex2image.php?latex=$$\square$$
+
+The web service will then hash $$\square$$ to 4943f0dd469f7b174bb843f02cce80bf
+and check whether the hash is contained in the whitelist file:
+ 
+77330c482bbf91151af9611f91e2907b
+4943f0dd469f7b174bb843f02cce80bf
+eaa234e884421a65922633d86697a6f8
+
+If it does, all is fine. If not the script will perform no operation. Note that
+this whitelisting approach does not scale. If the whitelist is very large, much
+time will be spent with lookup.
