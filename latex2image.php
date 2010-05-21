@@ -21,7 +21,6 @@ if (!file_exists($l2i.'/whitelist')) {
         $echocmd='echo';
         $echocmd.=' '.escapeshellarg($input);
         $l2icmd=escapeshellarg($l2i.'/latex2image');
-        $l2icmd.=' -l';
         $l2icmd.=' -T '.escapeshellarg($tmpdir);
         $l2icmd.=' -t '.escapeshellarg($template);
         $l2icmd.=' -o '.escapeshellarg($output);

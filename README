@@ -2,8 +2,8 @@ README
 
 latex2image renders latex formulae into PNG, and can either be used as a simple
 command-line tool or as a web service for rendering latex code on-the-fly. The
-web service employs a caching mechanism, thus avoiding to generate the same
-latex formulae more than once.
+web service employs a caching mechanism, thus avoiding to generate graphics for
+the same latex formulae more than once.
 
 
 INSTALLATION
