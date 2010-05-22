@@ -67,22 +67,3 @@ tool with the best of my knowledge (any comments welcome):
         The paranoid setting is the default. (For backwards compatibility, `y'
         and `1' are synonyms of `a', while `n' and `0' are synonyms for `r'.)"
   latex2image relies on this.
-
-If you want to be especially careful you can enable whitelisting. latex2image
-hashes latex formulae using sha1 to create file names. You can force
-latex2image.php to verify that the generated sha1-hash is contained in the file
-'whitelist'. Example:
-
-Let's assume we have a request like this:
-http://www.example.com/latex2image.php?latex=$$\square$$
-
-The web service will then hash $$\square$$ to 4943f0dd469f7b174bb843f02cce80bf
-and check whether the hash is contained in the whitelist file:
- 
-77330c482bbf91151af9611f91e2907b
-4943f0dd469f7b174bb843f02cce80bf
-eaa234e884421a65922633d86697a6f8
-
-If it does, all is fine. If not the script will perform no operation. Note that
-this whitelisting approach does not scale. If the whitelist is very large, much
-time will be spent with lookup.
