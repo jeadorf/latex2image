@@ -24,7 +24,7 @@ if (!file_exists($l2i.'/whitelist')) {
         $l2icmd.=' -T '.escapeshellarg($tmpdir);
         $l2icmd.=' -t '.escapeshellarg($template);
         $l2icmd.=' -o '.escapeshellarg($output);
-        system($echocmd.' | '.$l2icmd.' > /dev/null');
+        exec($echocmd.' | '.$l2icmd);
         rmdir($tmpdir);
     }
 
