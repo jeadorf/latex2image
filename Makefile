@@ -1,4 +1,4 @@
-VERSION=0.1.dev
+VERSION=0.1
 DISTNAME=latex2image-${VERSION}
 
 .PHONY: dist

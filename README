@@ -1,4 +1,4 @@
-README
+README latex2image 0.1
 
 latex2image renders latex formulae into PNG, and can either be used as a simple
 command-line tool or as a web service for rendering latex code on-the-fly. The
