@@ -20,7 +20,6 @@ installed latex2image like this:
   |- latex2image
   |- latex2image.php
   |- template.tex
-  |- whitelist
   |- deny.png
 
 You might need to adjust permissions for the directories tmp and cache.
