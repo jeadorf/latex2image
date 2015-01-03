@@ -48,14 +48,14 @@ if [ $template ] && [ $tmpdir ] && [ $output ]
 then
     :
 else
-    echo "latex2image 0.1.dev"
+    echo "latex2image"
     echo "Usage: latex2image -t <template-file> -T <tmp-dir> -o <output-file>"
     log "illegal arguments"
     exit 1
 fi
 
 # Read input
-while s=`line`
+while read -r s
 do
     snippet="$snippet$s"
 done
@@ -74,7 +74,7 @@ log "-"
 log "-"
 log "-"
 
-while l=`line`
+while read -r l
 do
     cl=${l// /}
     if [ "\${snippet}" = "$cl" ]
