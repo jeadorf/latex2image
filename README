@@ -1,4 +1,5 @@
 README latex2image 0.1.2.dev
+============================
 
 latex2image renders latex formulae into PNG, and can either be used as a simple
 command-line tool or as a web service for rendering latex code on-the-fly. The
@@ -8,34 +9,37 @@ the same latex formulae more than once.
 
 INSTALLATION
 
-1. Extract latex2image
+1 Extract latex2image
+~~~~~~~~~~~~~~~~~~~~~
 
 Extract the latex2image-XYZ.tar.gz archive to the desired location on your web
 server. For the rest of the installation instructions, let us assume that you
-installed latex2image like this:
+installed latex2image like this::
 
-/home/jdoe/latex2image
-  |- tmp/
-  |- cache/
-  |- latex2image
-  |- latex2image.php
-  |- template.tex
-  |- deny.png
+    /home/jdoe/latex2image
+      |- tmp/
+      |- cache/
+      |- latex2image
+      |- latex2image.php
+      |- template.tex
+      |- deny.png
 
 You might need to adjust permissions for the directories tmp and cache.
 
-2. Make latex2image accessible
+2 Make latex2image accessible
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Assuming that /home/jdoe/example.com is your web root for www.example.com, you
-now create a symbolic link to latex2image.php from /home/jdoe/example.com
+now create a symbolic link to latex2image.php from /home/jdoe/example.com::
 
-ln -s /home/jdoe/latex2image/latex2image.php /home/jdoe/example.com/latex2image.php
+    ln -s /home/jdoe/latex2image/latex2image.php /home/jdoe/example.com/latex2image.php
 
-3. Test latex2image
+3 Test latex2image
+~~~~~~~~~~~~~~~~~~
 
-Send a request to your web server like this:
+Send a request to your web server like this::
 
-http://www.example.com/latex2image.php?latex=$$\square$$
+    http://www.example.com/latex2image.php?latex=$$\square$$
 
 The script will prove to be operational if it returns a PNG picture showing a
 small square.
