@@ -1,4 +1,4 @@
-VERSION=0.1.1-dev
+VERSION=0.1.1
 DISTNAME=latex2image-${VERSION}
 
 .PHONY: dist
@@ -11,7 +11,7 @@ dist:
 	cp latex2image.php template.tex README deny.png dist/latex2image
 	mkdir dist/latex2image/tmp
 	mkdir dist/latex2image/cache
-	cd dist && tar czvf ${DISTNAME}.tar.gz latex2image 
+	cd dist && tar czvf ${DISTNAME}.tar.gz latex2image
 
 .PHONY: clean
 clean:

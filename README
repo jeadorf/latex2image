@@ -1,4 +1,4 @@
-README latex2image 0.1.1.dev
+README latex2image 0.1.1
 
 latex2image renders latex formulae into PNG, and can either be used as a simple
 command-line tool or as a web service for rendering latex code on-the-fly. The
@@ -26,7 +26,7 @@ You might need to adjust permissions for the directories tmp and cache.
 
 2. Make latex2image accessible
 
-Assuming that /home/jdoe/example.com is your web root for www.example.com, you 
+Assuming that /home/jdoe/example.com is your web root for www.example.com, you
 now create a symbolic link to latex2image.php from /home/jdoe/example.com
 
 ln -s /home/jdoe/latex2image/latex2image.php /home/jdoe/example.com/latex2image.php
@@ -44,7 +44,7 @@ small square.
 NOTES ON SECURITY
 
 I do not guarantee for the security of the script, as it might be dangerous
-to compile user-provided Latex input on the server. I have written the 
+to compile user-provided Latex input on the server. I have written the
 tool with the best of my knowledge (any comments welcome):
 
 * explicitly disabled write18 latex commands by feeding latex with the
